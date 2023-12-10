@@ -4,7 +4,7 @@ defmodule AOC do
   """
 
   defp readDay1 do
-    File.read!("lib/d1_i.txt")
+    File.read!("priv/input/d1_i.txt")
     |> String.split("\n")
   end
 

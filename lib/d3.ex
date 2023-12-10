@@ -4,7 +4,7 @@ defmodule D3 do
     input =
       Enum.concat([
         [String.duplicate(".", 1)],
-        File.read!("lib/d3.txt") |> String.split("\n"),
+        File.read!("priv/input/d3.txt") |> String.split("\n"),
         [String.duplicate(".", 1)]
       ])
 
