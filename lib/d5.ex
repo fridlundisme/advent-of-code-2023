@@ -4,6 +4,41 @@ defmodule D5 do
   end
 
   def p1 do
+    {seeds, list} = init()
+    IO.inspect(seeds)
+
+    Enum.map(seeds, &recur(&1, list)) |> Enum.min() |> IO.inspect(label: "res")
+  end
+
+  def measure_execution_time do
+    {time, result} = :timer.tc(D5, :p2, [], :second)
+    IO.puts("Execution time: #{time} sec")
+    result
+  end
+
+  def p2 do
+    {seeds, list} = init()
+
+    ranges =
+      Enum.chunk_every(seeds, 2)
+      |> Enum.map(fn [h, t] -> Range.new(h, h + t - 1) end)
+
+    Enum.map(ranges, fn seed ->
+      Enum.flat_map(Enum.at(list, 0), fn {_diff, dest, source} ->
+        case Range.disjoint?(seed, source) do
+          false ->
+            [{seed, source, dest}]
+
+          _ ->
+            []
+        end
+      end)
+    end)
+
+    # Enum.map(ranges, &recur(&1, list)) |> Enum.min() |> IO.inspect(label: "res")
+  end
+
+  defp init() do
     {seeds, seed_soil, soil_fert, fert_wat, wat_light, light_temp, temp_hum, hum_loc} =
       readlines()
       |> Enum.map(
@@ -21,7 +56,7 @@ defmodule D5 do
         end
       )
 
-    Enum.map(seeds, &recur(&1, list)) |> Enum.min()
+    {seeds, list}
   end
 
   defp recur(val, []) do
