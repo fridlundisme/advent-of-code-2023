@@ -21,17 +21,21 @@ defmodule D6 do
     races = [first, second, third, fourth]
 
     Enum.map(races, fn {_race, {time, record}} ->
-      {root1, root2} = roots(1, time, record)
-      IO.inspect({root1, root2}, label: "roots")
-
-      root1 = root1 - 1
-      root2 = root2 + 1
-      {r1, _} = -Float.ceil(root1) |> Float.ratio()
-      {r2, _} = -Float.floor(root2) |> Float.ratio()
-      {r1, r2}
+      calculate_roots(time, record)
     end)
     |> Enum.map(fn {from, to} -> Range.new(from, to) |> Range.size() end)
     |> Enum.reduce(fn range, acc -> range * acc end)
+  end
+
+  defp calculate_roots(time, record) do
+    {root1, root2} = roots(1, time, record)
+    IO.inspect({root1, root2}, label: "roots")
+
+    root1 = root1 - 1
+    root2 = root2 + 1
+    {r1, _} = -Float.ceil(root1) |> Float.ratio()
+    {r2, _} = -Float.floor(root2) |> Float.ratio()
+    {r1, r2}
   end
 
   def p2 do
@@ -48,14 +52,7 @@ defmodule D6 do
       end)
       |> List.to_tuple()
 
-    {root1, root2} = roots(1, time, dist)
-    IO.inspect({root1, root2}, label: "roots")
-
-    root1 = root1 - 1
-    root2 = root2 + 1
-    {r1, _} = -Float.ceil(root1) |> Float.ratio()
-    {r2, _} = -Float.floor(root2) |> Float.ratio()
-    {r1, r2}
+    {r1, r2} = calculate_roots(time, dist)
     Range.new(r1, r2) |> Range.size()
   end
 
