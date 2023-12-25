@@ -64,7 +64,7 @@ defmodule D5 do
   end
 
   defp recur(val, [h | t]) do
-    Enum.reduce_while(h, val, fn {{_atom, diff}, dest, source}, acc ->
+    Enum.reduce_while(h, val, fn {{_atom, diff}, _dest, source}, acc ->
       case acc in source do
         true -> {:halt, acc + diff}
         _ -> {:cont, acc}

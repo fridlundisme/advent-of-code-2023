@@ -1,5 +1,4 @@
 defmodule D8 do
-  import Math
   def ex_input(), do: "LLR
 
   AAA = (BBB, BBB)

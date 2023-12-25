@@ -50,7 +50,7 @@ defmodule D7 do
       {sorted_hand, hand, bid} = sorted_hand(line)
 
       hands =
-        Enum.flat_map(hands_, fn {key, {regex, score}} ->
+        Enum.flat_map(hands_, fn {key, {regex, _score}} ->
           case scanned = Regex.scan(regex, sorted_hand) do
             [] -> [{:one, [], {hand, bid}}]
             _ -> [{key, scanned |> List.flatten(), {hand, bid}}]
