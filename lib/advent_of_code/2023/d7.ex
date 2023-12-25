@@ -1,4 +1,4 @@
-defmodule D7 do
+defmodule AdventOfCode.Year2023.Day7 do
   def ex_input, do: "32T3K 765
   T55J5 684
   KK677 28

@@ -1,4 +1,4 @@
-defmodule D8 do
+defmodule AdventOfCode.Year2023.Day8 do
   def ex_input(), do: "LLR
 
   AAA = (BBB, BBB)

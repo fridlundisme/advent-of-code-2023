@@ -1,4 +1,4 @@
-defmodule D11 do
+defmodule AdventOfCode.Year2023.Day11 do
   def ex_input do
     "...#......
     .......#..

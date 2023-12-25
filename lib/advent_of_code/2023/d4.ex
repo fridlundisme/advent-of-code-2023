@@ -1,4 +1,4 @@
-defmodule D4 do
+defmodule AdventOfCode.Year2023.Day4 do
   import Bitwise
 
   defp read_lines do

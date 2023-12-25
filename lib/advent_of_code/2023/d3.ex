@@ -1,4 +1,4 @@
-defmodule D3 do
+defmodule AdventOfCode.Year2023.Day3 do
   # Answer 550064
   def p1 do
     input =

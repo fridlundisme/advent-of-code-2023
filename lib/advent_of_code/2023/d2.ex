@@ -1,4 +1,4 @@
-defmodule D2 do
+defmodule AdventOfCode.Year2023.Day2 do
   def readLines do
     File.read!("priv/input/d2.txt") |> String.split("\n")
   end

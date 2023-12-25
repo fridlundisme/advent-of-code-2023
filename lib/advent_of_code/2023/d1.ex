@@ -1,4 +1,4 @@
-defmodule AOC do
+defmodule AdventOfCode.Year2023.Day1 do
   @moduledoc """
   Documentation for `AOC`.
   """
